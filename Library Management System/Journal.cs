@@ -9,7 +9,7 @@
         public Journal(string name, Date date, string genre)
             : base(name, date, genre)
         {
-            // Journal sinifı üçün əlavə xüsusiyyətlər yoxdur, bu səbəbdə boş qalır.
+            // Journal sinifı üçün əlavə xüsusiyyətlər yoxdur, bu səbəblə boş qalır.
         }
     }
 }
