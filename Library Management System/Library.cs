@@ -17,6 +17,7 @@
                 new Book("Agatha Christie", "Murder on the Orient Express", new Date(1934), "Mystery"),
                 new Book("George Orwell", "1984", new Date(1948), "Science Fiction"),
                 new Book("Arthur Conan Doyle", "Sherlock Holmes", new Date(1887), "Mystery"),
+                new Journal("The Economist", new Date(2023), "Magazine, Business"),
                 new Journal("National Geographic", new Date(2023), "Magazine, Science")
             };
         }

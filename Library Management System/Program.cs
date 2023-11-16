@@ -69,13 +69,6 @@ class Program
                         // Yanlış seçim halında istifadəçiyə bildiriş göstərilir.
                         Console.WriteLine("Yanlış seçim! Zəhmət olmasa düzgün əməliyyatı seçin.");
                         break;
-
-
-
-
-
-
-
                 }
             }
         }
