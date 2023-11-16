@@ -67,7 +67,9 @@ class Program
                         return;
                     default:
                         // Yanlış seçim halında istifadəçiyə bildiriş göstərilir.
+                        Console.ForegroundColor = ConsoleColor.Red;
                         Console.WriteLine("Yanlış seçim! Zəhmət olmasa düzgün əməliyyatı seçin.");
+                        Console.ForegroundColor = ConsoleColor.White;
                         break;
                 }
             }
