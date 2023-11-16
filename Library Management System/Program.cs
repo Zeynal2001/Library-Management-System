@@ -9,7 +9,6 @@ class Program
         // Programın əsas obyekti yaradılır və Run metodu çağrılır.
         Program program = new Program();
         program.Run();
-        
     }
 
     void Run()
@@ -18,17 +17,17 @@ class Program
         {
             // İstifadəçinin doğrulanması üçün AuthenticateUser metodu çağrılır.
             bool isUserAuthenticated = AuthenticateUser();
-            int loginAttempts = 0;
+            int loginAttemps = 0;
             Library library = new Library();
 
-            // İstifadəçi doğrulanana qədər təkrarlanan bir döngü.
+            // İstifadəçinin doğrulanması üçün AuthenticateUser metodu çağrılır.
             while (!isUserAuthenticated)
             {
-                Console.WriteLine("Daxil etdiyiniz istifadəçi adı və ya şifrə yalnışdır!");
-                loginAttempts++;
+                Console.WriteLine("\"Daxil etdiyiniz istifadəçi adı və ya şifrə yalnışdır!\"");
+                loginAttemps++;
 
                 // 5 dəfə yanlış giriş etdikdə proqramın bağlanması.
-                if (loginAttempts >= 5)
+                if (loginAttemps >= 5)
                 {
                     Console.WriteLine("Siz 5 dəfə yanlış istifadəçi adı və ya şifrə daxil etdiniz. Proqram bağlanır.");
                     return;
@@ -42,27 +41,27 @@ class Program
             {
                 // Menyunun göstərilməsi üçün DisplayMenu metodu çağrılır.
                 DisplayMenu();
-                string choice = Console.ReadLine();
+                int choise = Convert.ToInt32(Console.ReadLine());
 
-                switch (choice)
+                switch (choise)
                 {
-                    case "1":
+                    case 1:
                         // Kitabxanadakı elementlərin siyahısının göstərilməsi.
                         library.DisplayLibraryItems();
                         break;
-                    case "2":
+                    case 2:
                         // Element əlavə etmə funksiyası çağrılır və xəta baş verərsə o çap edilir.
                         AddLibraryItemWithExceptionHandling(library);
                         break;
-                    case "3":
+                    case 3:
                         // Tələbəyə kitab vermə funksiyası çağrılır və xəta baş verərsə o çap edilir.
                         LendItemToStudentWithExceptionHandling(library);
                         break;
-                    case "4":
+                    case 4:
                         // Kitabxanada axtarış funksiyası çağrılır və xəta baş verərsə o çap edilir.
                         SearchLibraryWithExceptionHandling(library);
                         break;
-                    case "5":
+                    case 5:
                         // Proqramın bağlanması.
                         Console.WriteLine("Proqram bağlanır.");
                         return;
@@ -70,6 +69,13 @@ class Program
                         // Yanlış seçim halında istifadəçiyə bildiriş göstərilir.
                         Console.WriteLine("Yanlış seçim! Zəhmət olmasa düzgün əməliyyatı seçin.");
                         break;
+
+
+
+
+
+
+
                 }
             }
         }
@@ -80,7 +86,9 @@ class Program
         }
         finally
         {
-            // Bura əlavə təmizləmə və ya əlavə tədbirlər əlavə edilə bilər.
+            // Bura əlavə təmizləmə və ya başqa tədbirlər əlavə edilə bilər.
+            Thread.Sleep(5000);
+            Console.Clear();
         }
     }
 
@@ -89,29 +97,41 @@ class Program
         try
         {
             // İstifadəçi adı və şifrəni almaq üçün istifadəçiyə soruşulur.
-            Console.Write("İstifadəçi adı: ");
+            Console.WriteLine("İstifadəçi adı: ");
+            Console.ForegroundColor = ConsoleColor.Blue;
             string username = Console.ReadLine();
-            Console.Write("Şifrə: ");
-            string password = Console.ReadLine();
+            Console.ForegroundColor = ConsoleColor.White;
 
-            // Daxil edilmiş məlumatların adminin məlumatları ilə uyğunluğunu yoxlamaq.
+            Console.WriteLine("Şifrə: ");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            string password = Console.ReadLine();
+            Console.ForegroundColor = ConsoleColor.White;
+
+            // Daxil edilmiş məlumatların Zeynalın məlumatları ilə uyğunluğunu yoxlamaq.
             if (username == "Zeynal" && password == "Zeynal123")
             {
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Giriş uğurla başa çatdı!");
+                Console.ForegroundColor = ConsoleColor.White;
                 return true;
             }
             else
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Giriş uğursuz oldu. Yenidən cəhd edin.");
+                Console.ForegroundColor = ConsoleColor.White;
                 return false;
             }
         }
         catch (Exception ex)
         {
             // Əgər xəta baş verərsə istifadəçiyə bildiriş göstərilir.
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine($"Xəta baş verdi: {ex.Message}");
+            Console.ForegroundColor = ConsoleColor.White;
             return false;
         }
+
     }
 
     public void AddLibraryItemWithExceptionHandling(Library library)
@@ -123,7 +143,9 @@ class Program
         }
         catch (Exception ex)
         {
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine($"Xəta baş verdi: {ex.Message}");
+            Console.ForegroundColor = ConsoleColor.White;
         }
     }
 
@@ -136,12 +158,15 @@ class Program
         }
         catch (Exception ex)
         {
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine($"Xəta baş verdi: {ex.Message}");
+            Console.ForegroundColor = ConsoleColor.White;
         }
     }
 
     public void SearchLibraryWithExceptionHandling(Library library)
     {
+        
         try
         {
             // Kitabxanada axtarış funksiyası çağrılır və xəta baş verərsə o çap edilir.
@@ -149,7 +174,9 @@ class Program
         }
         catch (Exception ex)
         {
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine($"Xəta baş verdi: {ex.Message}");
+            Console.ForegroundColor = ConsoleColor.White;
         }
     }
 

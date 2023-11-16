@@ -7,7 +7,7 @@
         // Kitabın müəllifi kimi əlavə xüsusiyyət.
         public string Author { get; set; }
 
-        // Book sinifinin konstruktoru.
+        // Book sinifinin constructoru.
         // Bu constructor, yeni bir Book obyekti yaratmağa və əsas xüsusiyyətlərini təyin etməyə kömək edir.
         public Book(string author, string name, Date date, string genre)
             : base(name, date, genre)

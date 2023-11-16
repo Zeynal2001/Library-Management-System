@@ -17,7 +17,6 @@
                 new Book("Agatha Christie", "Murder on the Orient Express", new Date(1934), "Mystery"),
                 new Book("George Orwell", "1984", new Date(1948), "Science Fiction"),
                 new Book("Arthur Conan Doyle", "Sherlock Holmes", new Date(1887), "Mystery"),
-                new Journal("The Economist", new Date(2023), "Magazine, Business"),
                 new Journal("National Geographic", new Date(2023), "Magazine, Science")
             };
         }
@@ -28,20 +27,18 @@
             Console.WriteLine("Elementlərə diqqətlə baxın. 5 Saniyə içində ekran təmizlənəcək.");
 
             Console.WriteLine("\nKitabxandakı elementlər:");
-
             foreach (var item in _libraryItems)
             {
-                if (item is Book book)
+                if (item is Book kitab)
                 {
-                    Console.WriteLine($"Kitab: {book.Name} - Müəllif: {book.Author} - Janr: {book.Genre} - Tarix: {book.Date.Year}");
+                    Console.WriteLine($"Kitab: {kitab.Name} - Müəllif: {kitab.Author} - Janr: {kitab.Genre} - Tarix: {kitab.Date.Year}");
                 }
-                else if (item is Journal journal)
+                else if (item is Journal jurnal)
                 {
-                    Console.WriteLine($"Jurnal: {journal.Name} - Janr: {journal.Genre} - Tarix: {journal.Date.Year}");
+                    Console.WriteLine($"Jurnal: {jurnal.Name} - Janr: {jurnal.Genre} - Tarix: {jurnal.Date.Year}");
                 }
             }
-
-            Thread.Sleep(15000);
+            Thread.Sleep(13000);
             Console.Clear();
         }
 
@@ -72,7 +69,7 @@
             else if (itemType.ToLower() == "jurnal")
             {
                 Array.Resize(ref _libraryItems, _libraryItems.Length + 1);
-                _libraryItems[_libraryItems.Length - 1] = new Journal(itemName, new Date(year), genre);
+                _libraryItems[_libraryItems.Length -1] = new Journal(itemName, new Date(year), genre);
                 Console.WriteLine("Jurnal əlavə edildi.");
             }
             else
@@ -81,7 +78,7 @@
             }
         }
 
-        // Kitabxanadan element verilmək üçün metod
+        // Kitabxanadan kirayə element verilmək üçün metod
         public void LendItemToStudent()
         {
             try
@@ -89,7 +86,7 @@
                 // Kitabxandakı elementləri göstərmək
                 DisplayLibraryItems();
 
-                Console.Write("\nTələbəyə (kirayə) veriləcək elementin adını daxil edin: ");
+                Console.Write("\nKirayə veriləcək elementin adını daxil edin: ");
                 string itemName = Console.ReadLine();
 
                 bool found = false;
@@ -102,33 +99,32 @@
                         found = true;
 
                         // Elementin tipinə görə əməliyyat yerinə yetirmək
-                        if (item is Book book)
+                        if (item is Book kitab)
                         {
-                            Console.WriteLine($"Kitab tapıldı: {book.Name} - Müəllif: {book.Author} - Janr: {book.Genre} - Tarix: {book.Date.Year}");
+                            Console.WriteLine($"Kitab tapıldı: {kitab.Name} - Müəllif: {kitab.Author} - Janr: {kitab.Genre} - Tarix: {kitab.Date.Year}");
                             Console.Write("Tələbənin adını daxil edin: ");
                             string studentName = Console.ReadLine();
                             // Burada tələbəyə kitab verilmə əməliyyatı yerinə yetirilir
-                            Console.WriteLine($"{book.Name} adlı kitab {studentName} adlı tələbəyə (kirayə) verildi.");
-                            // Kitabxanadan elementi silmək
-                            RemoveLibraryItem(item);
-                            // Kitabın artıq verildiyini göstərmək üçün IsAvailable property-sini dəyişmək
-                            book.IsAvailable = false;
-                        }
-                        else if (item is Journal journal)
-                        {
-                            Console.WriteLine($"Jurnal tapıldı: {journal.Name} - Janr: {journal.Genre} - Tarix: {journal.Date.Year}");
-                            Console.Write("Tələbənin adını daxil edin: ");
-                            string studentName = Console.ReadLine();
-                            // Burada tələbəyə jurnal verilən əməliyyatı yerinə yetirilir
-                            Console.WriteLine($"{journal.Name} adlı jurnal {studentName} adlı tələbəyə verildi.");
+                            Console.WriteLine($"{kitab.Name} adlı kitab {studentName} adlı tələbəyə (kirayə) verildi.");
                             // Kitabxanadan elementi silmək
                             RemoveLibraryItem(item);
                             // Jurnalın artıq verildiyini göstərmək üçün IsAvailable property-sini dəyişmək
-                            journal.IsAvailable = false;
+                            kitab.IsAvailable = false;
+                        }
+                        else if (item is Journal jurnal)
+                        {
+                            Console.WriteLine($"Jurnal tapıldı: {jurnal.Name} - Janr: {jurnal.Genre} - Tarix: {jurnal.Date.Year}");
+                            Console.Write("Tələbənin adını daxil edin: ");
+                            string studentName = Console.ReadLine();
+                            // Burada tələbəyə jurnal verilən əməliyyatı yerinə yetirilir
+                            Console.WriteLine($"{jurnal.Name} adlı jurnal {studentName} adlı tələbəyə verildi.");
+                            // Kitabxanadan elementi silmək
+                            RemoveLibraryItem(item);
+                            // Jurnalın artıq verildiyini göstərmək üçün IsAvailable property-sini dəyişmək
+                            jurnal.IsAvailable = false;
                         }
                     }
                 }
-
                 if (!found)
                 {
                     Console.WriteLine("Daxil etdiyiniz adla heç bir element tapılmadı və ya artıq verilib.");
@@ -138,12 +134,17 @@
             {
                 Console.WriteLine($"Xəta baş verdi: {ex.Message}");
             }
+            finally
+            {
+               Thread.Sleep(5000);
+               Console.Clear();
+            }
         }
 
         // Kitabxanda axtarış üçün metod
         public void SearchLibrary()
         {
-            Console.Write("\nAxtardığınız elementin adını daxil edin: ");
+            Console.WriteLine("\nAxtardığınız elementin adını daxil edin: ");
             string searchName = Console.ReadLine();
 
             bool found = false;
@@ -154,13 +155,13 @@
                 {
                     found = true;
 
-                    if (item is Book book)
+                    if (item is Book kitab)
                     {
-                        Console.WriteLine($"Tapıldı: Kitab - Ad: {book.Name} - Müəllif: {book.Author} - Janr: {book.Genre} - Tarix: {book.Date.Year}");
+                        Console.WriteLine($"Tapıldı: Kitab - Ad: {kitab.Name} - Müəllif: {kitab.Author} - Janr: {kitab.Genre} - Tarix: {kitab.Date.Year}");
                     }
-                    else if (item is Journal journal)
+                    else if (item is Journal jurnal)
                     {
-                        Console.WriteLine($"Tapıldı: Jurnal - Ad: {journal.Name} - Janr: {journal.Genre} - Tarix: {journal.Date.Year}");
+                        Console.WriteLine($"Tapıldı: Jurnal - Ad: {jurnal.Name} - Janr: {jurnal.Genre} - Tarix: {jurnal.Date.Year}");
                     }
                 }
             }
@@ -171,13 +172,12 @@
             }
         }
 
-        // Kitabxanadan elementi silmək üçün metod
-
+        //Kitabxanadan elementi silmək üçün metod
         private void RemoveLibraryItem(LibraryItem item)
         {
             // Verilən elementi kitabxanadan silmək üçün kod
-            int indexToRemove = Array.IndexOf(_libraryItems, item);
-            if (indexToRemove != -1)
+            int indexToRomove = Array.IndexOf( _libraryItems, item);
+            if (indexToRomove != -1)
             {
                 // İndeksi silmək üçün Resize funksiyasına göndərək kitabxanadan elementi silirik
                 Array.Resize(ref _libraryItems, _libraryItems.Length - 1);

@@ -10,11 +10,11 @@
         public bool IsAvailable { get; set; }
         public string Genre { get; set; }
 
-        // LibraryItem sinifinin konstruktoru.
+        // LibraryItem sinifinin constructor.
         // Bu constructor, yeni bir LibraryItem obyekti yaratmağa və əsas xüsusiyyətlərini təyin etməyə kömək edir.
         public LibraryItem(string name, Date date, string genre)
         {
-            // Verilənlər əsasında obyektin xüsusiyyətlərini təyin etmə.
+            // Verilənlər əsasında obyektin xüsusiyyətlərini təyin etmək.
             Name = name;
             Date = date;
             Genre = genre;
@@ -22,3 +22,4 @@
         }
     }
 }
+
