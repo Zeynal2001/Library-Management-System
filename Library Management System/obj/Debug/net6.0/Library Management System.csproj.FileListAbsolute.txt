@@ -1,0 +1,14 @@
+C:\Users\user\Desktop\C# Course\C# Jed Course\Projects\Library Management System\Library Management System\bin\Debug\net6.0\Library Management System.exe
+C:\Users\user\Desktop\C# Course\C# Jed Course\Projects\Library Management System\Library Management System\bin\Debug\net6.0\Library Management System.deps.json
+C:\Users\user\Desktop\C# Course\C# Jed Course\Projects\Library Management System\Library Management System\bin\Debug\net6.0\Library Management System.runtimeconfig.json
+C:\Users\user\Desktop\C# Course\C# Jed Course\Projects\Library Management System\Library Management System\bin\Debug\net6.0\Library Management System.dll
+C:\Users\user\Desktop\C# Course\C# Jed Course\Projects\Library Management System\Library Management System\bin\Debug\net6.0\Library Management System.pdb
+C:\Users\user\Desktop\C# Course\C# Jed Course\Projects\Library Management System\Library Management System\obj\Debug\net6.0\Library Management System.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\Desktop\C# Course\C# Jed Course\Projects\Library Management System\Library Management System\obj\Debug\net6.0\Library Management System.AssemblyInfoInputs.cache
+C:\Users\user\Desktop\C# Course\C# Jed Course\Projects\Library Management System\Library Management System\obj\Debug\net6.0\Library Management System.AssemblyInfo.cs
+C:\Users\user\Desktop\C# Course\C# Jed Course\Projects\Library Management System\Library Management System\obj\Debug\net6.0\Library Management System.csproj.CoreCompileInputs.cache
+C:\Users\user\Desktop\C# Course\C# Jed Course\Projects\Library Management System\Library Management System\obj\Debug\net6.0\Library Management System.dll
+C:\Users\user\Desktop\C# Course\C# Jed Course\Projects\Library Management System\Library Management System\obj\Debug\net6.0\refint\Library Management System.dll
+C:\Users\user\Desktop\C# Course\C# Jed Course\Projects\Library Management System\Library Management System\obj\Debug\net6.0\Library Management System.pdb
+C:\Users\user\Desktop\C# Course\C# Jed Course\Projects\Library Management System\Library Management System\obj\Debug\net6.0\Library Management System.genruntimeconfig.cache
+C:\Users\user\Desktop\C# Course\C# Jed Course\Projects\Library Management System\Library Management System\obj\Debug\net6.0\ref\Library Management System.dll
