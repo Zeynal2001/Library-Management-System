@@ -14,6 +14,7 @@
             // Başlanğıc elementlərin yaradılması
             _libraryItems = new LibraryItem[]
             {
+
                 new Book("Agatha Christie", "Murder on the Orient Express", new Date(1934), "Mystery"),
                 new Book("George Orwell", "1984", new Date(1948), "Science Fiction"),
                 new Book("Arthur Conan Doyle", "Sherlock Holmes", new Date(1887), "Mystery"),
@@ -30,6 +31,7 @@
             Console.WriteLine("\nKitabxandakı elementlər:");
             foreach (var item in _libraryItems)
             {
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
                 if (item is Book kitab)
                 {
                     Console.WriteLine($"Kitab: {kitab.Name} - Müəllif: {kitab.Author} - Janr: {kitab.Genre} - Tarix: {kitab.Date.Year}");
@@ -38,6 +40,7 @@
                 {
                     Console.WriteLine($"Jurnal: {jurnal.Name} - Janr: {jurnal.Genre} - Tarix: {jurnal.Date.Year}");
                 }
+                Console.ForegroundColor = ConsoleColor.White;
             }
             Thread.Sleep(13000);
             Console.Clear();
@@ -47,35 +50,51 @@
         public void AddLibraryItem()
         {
             Console.Write("\nElement növünü seçin (Kitab, Jurnal və s.): ");
+            Console.ForegroundColor = ConsoleColor.Blue;
             string itemType = Console.ReadLine();
+            Console.ForegroundColor = ConsoleColor.White;
 
             Console.Write("Adı: ");
+            Console.ForegroundColor = ConsoleColor.Blue;
             string itemName = Console.ReadLine();
+            Console.ForegroundColor = ConsoleColor.White;
 
             Console.Write("Tarix - İl: ");
+            Console.ForegroundColor = ConsoleColor.Blue;
             int year = Convert.ToInt32(Console.ReadLine());
+            Console.ForegroundColor = ConsoleColor.White;
 
             Console.Write("Janr: ");
+            Console.ForegroundColor = ConsoleColor.Blue;
             string genre = Console.ReadLine();
+            Console.ForegroundColor = ConsoleColor.Blue;
 
             if (itemType.ToLower() == "kitab")
             {
                 Console.Write("Müəllif: ");
+                Console.ForegroundColor = ConsoleColor.Blue;
                 string author = Console.ReadLine();
+                Console.ForegroundColor = ConsoleColor.White;
 
                 Array.Resize(ref _libraryItems, _libraryItems.Length + 1);
                 _libraryItems[_libraryItems.Length - 1] = new Book(author, itemName, new Date(year), genre);
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Kitab əlavə edildi.");
+                Console.ForegroundColor = ConsoleColor.White;
             }
             else if (itemType.ToLower() == "jurnal")
             {
                 Array.Resize(ref _libraryItems, _libraryItems.Length + 1);
                 _libraryItems[_libraryItems.Length -1] = new Journal(itemName, new Date(year), genre);
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Jurnal əlavə edildi.");
+                Console.ForegroundColor = ConsoleColor.White;
             }
             else
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Düzgün element növü daxil edilməyib.");
+                Console.ForegroundColor = ConsoleColor.White;
             }
         }
 
@@ -88,7 +107,9 @@
                 DisplayLibraryItems();
 
                 Console.Write("\nKirayə veriləcək elementin adını daxil edin: ");
+                Console.ForegroundColor = ConsoleColor.Blue;
                 string itemName = Console.ReadLine();
+                Console.ForegroundColor = ConsoleColor.White;
 
                 bool found = false;
 
@@ -104,21 +125,29 @@
                         {
                             Console.WriteLine($"Kitab tapıldı: {kitab.Name} - Müəllif: {kitab.Author} - Janr: {kitab.Genre} - Tarix: {kitab.Date.Year}");
                             Console.Write("Tələbənin adını daxil edin: ");
+                            Console.ForegroundColor = ConsoleColor.Blue;
                             string studentName = Console.ReadLine();
+                            Console.ForegroundColor = ConsoleColor.White;
                             // Burada tələbəyə kitab verilmə əməliyyatı yerinə yetirilir
+                            Console.ForegroundColor = ConsoleColor.Green;
                             Console.WriteLine($"{kitab.Name} adlı kitab {studentName} adlı tələbəyə (kirayə) verildi.");
+                            Console.ForegroundColor = ConsoleColor.White;
                             // Kitabxanadan elementi silmək
                             RemoveLibraryItem(item);
-                            // Jurnalın artıq verildiyini göstərmək üçün IsAvailable property-sini dəyişmək
+                            // Kitabın artıq verildiyini göstərmək üçün IsAvailable property-sini dəyişmək
                             kitab.IsAvailable = false;
                         }
                         else if (item is Journal jurnal)
                         {
                             Console.WriteLine($"Jurnal tapıldı: {jurnal.Name} - Janr: {jurnal.Genre} - Tarix: {jurnal.Date.Year}");
                             Console.Write("Tələbənin adını daxil edin: ");
+                            Console.ForegroundColor = ConsoleColor.Blue;
                             string studentName = Console.ReadLine();
+                            Console.ForegroundColor = ConsoleColor.White;
                             // Burada tələbəyə jurnal verilən əməliyyatı yerinə yetirilir
+                            Console.ForegroundColor = ConsoleColor.Green;
                             Console.WriteLine($"{jurnal.Name} adlı jurnal {studentName} adlı tələbəyə verildi.");
+                            Console.ForegroundColor = ConsoleColor.White;
                             // Kitabxanadan elementi silmək
                             RemoveLibraryItem(item);
                             // Jurnalın artıq verildiyini göstərmək üçün IsAvailable property-sini dəyişmək
@@ -128,12 +157,16 @@
                 }
                 if (!found)
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Daxil etdiyiniz adla heç bir element tapılmadı və ya artıq verilib.");
+                    Console.ForegroundColor = ConsoleColor.White;
                 }
             }
             catch (Exception ex)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine($"Xəta baş verdi: {ex.Message}");
+                Console.ForegroundColor = ConsoleColor.White;
             }
             finally
             {
@@ -169,7 +202,9 @@
 
             if (!found)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Axtarışa uyğun element tapılmadı.");
+                Console.ForegroundColor = ConsoleColor.White;
             }
         }
 

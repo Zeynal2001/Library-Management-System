@@ -6,6 +6,10 @@ class Program
     static void Main(string[] args)
     {
         Console.OutputEncoding = Encoding.UTF8;
+        Console.ForegroundColor = ConsoleColor.Blue;
+        Console.WriteLine("Xoş gəlmisiniz ;)");
+        Console.WriteLine("Xaiş edirik proqrama giriş etmək üçün aşağıda İstifadəçi adınızı və Şifrənizi daxil");
+        Console.ForegroundColor = ConsoleColor.White;
         // Programın əsas obyekti yaradılır və Run metodu çağrılır.
         Program program = new Program();
         program.Run();
@@ -23,13 +27,17 @@ class Program
             // İstifadəçinin doğrulanması üçün AuthenticateUser metodu çağrılır.
             while (!isUserAuthenticated)
             {
+                Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("\"Daxil etdiyiniz istifadəçi adı və ya şifrə yalnışdır!\"");
                 loginAttemps++;
+                Console.ForegroundColor = ConsoleColor.White;
 
                 // 5 dəfə yanlış giriş etdikdə proqramın bağlanması.
                 if (loginAttemps >= 5)
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Siz 5 dəfə yanlış istifadəçi adı və ya şifrə daxil etdiniz. Proqram bağlanır.");
+                    Console.ForegroundColor = ConsoleColor.White;
                     return;
                 }
 
@@ -63,7 +71,7 @@ class Program
                         break;
                     case 5:
                         // Proqramın bağlanması.
-                        Console.WriteLine("Proqram bağlanır.");
+                        Console.WriteLine("Proqram bağlanır. ");
                         return;
                     default:
                         // Yanlış seçim halında istifadəçiyə bildiriş göstərilir.
