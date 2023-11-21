@@ -8,7 +8,7 @@ class Program
         Console.OutputEncoding = Encoding.UTF8;
         Console.ForegroundColor = ConsoleColor.Blue;
         Console.WriteLine("Xoş gəlmisiniz ;)");
-        Console.WriteLine("Xaiş edirik proqrama giriş etmək üçün aşağıda İstifadəçi adınızı və Şifrənizi daxil");
+        Console.WriteLine("Xaiş edirik proqrama giriş etmək üçün aşağıda İstifadəçi adınızı və Şifrənizi daxil edin");
         Console.ForegroundColor = ConsoleColor.White;
         // Programın əsas obyekti yaradılır və Run metodu çağrılır.
         Program program = new Program();

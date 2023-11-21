@@ -207,6 +207,7 @@
                 Console.ForegroundColor = ConsoleColor.White;
             }
 
+
             Console.WriteLine("\nAxtardığınız elementin janrını daxil edin: ");
             string searchGenre = Console.ReadLine();
 
@@ -229,7 +230,7 @@
                 }
             }
 
-            if (!found)
+            if (!found2)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("Axtarışa uyğun element tapılmadı.");
