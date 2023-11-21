@@ -206,6 +206,36 @@
                 Console.WriteLine("Axtarışa uyğun element tapılmadı.");
                 Console.ForegroundColor = ConsoleColor.White;
             }
+
+            Console.WriteLine("\nAxtardığınız elementin janrını daxil edin: ");
+            string searchGenre = Console.ReadLine();
+
+            bool found2 = false;
+
+            foreach (var item in _libraryItems)
+            {
+                if (item.Genre.ToLower() == searchGenre.ToLower())
+                {
+                    found = true;
+
+                    if (item is Book kitab)
+                    {
+                        Console.WriteLine($"Tapıldı: Kitab - Ad: {kitab.Name} - Müəllif: {kitab.Author} - Janr: {kitab.Genre} - Tarix: {kitab.Date.Year}");
+                    }
+                    else if (item is Journal jurnal)
+                    {
+                        Console.WriteLine($"Tapıldı: Jurnal - Ad: {jurnal.Name} - Janr: {jurnal.Genre} - Tarix: {jurnal.Date.Year}");
+                    }
+                }
+            }
+
+            if (!found)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Axtarışa uyğun element tapılmadı.");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+
         }
 
         //Kitabxanadan elementi silmək üçün metod
