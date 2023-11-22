@@ -175,9 +175,11 @@
             }
         }
 
+
         // Kitabxanda axtarış üçün metod
         public void SearchLibrary()
         {
+            //Elementin adına görə axtarış
             Console.WriteLine("\nAxtardığınız elementin adını daxil edin: ");
             string searchName = Console.ReadLine();
 
@@ -208,6 +210,7 @@
             }
 
 
+            //Elementin janrına görə axtarış
             Console.WriteLine("\nAxtardığınız elementin janrını daxil edin: ");
             string searchGenre = Console.ReadLine();
 
@@ -217,7 +220,7 @@
             {
                 if (item.Genre.ToLower() == searchGenre.ToLower())
                 {
-                    found = true;
+                    found2 = true;
 
                     if (item is Book kitab)
                     {
@@ -237,6 +240,8 @@
                 Console.ForegroundColor = ConsoleColor.White;
             }
 
+            Thread.Sleep(6000);
+            Console.Clear();
         }
 
         //Kitabxanadan elementi silmək üçün metod
