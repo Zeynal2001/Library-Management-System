@@ -38,6 +38,7 @@ class Program
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Siz 5 dəfə yanlış istifadəçi adı və ya şifrə daxil etdiniz. Proqram bağlanır.");
                     Console.ForegroundColor = ConsoleColor.White;
+                    Thread.Sleep(2000);
                     return;
                 }
 
@@ -99,16 +100,34 @@ class Program
     {
         try
         {
-            // İstifadəçi adı və şifrəni almaq üçün istifadəçiyə soruşulur.
+            // İstifadəçi adı və şifrəni almaq üçün istifadəçidən soruşulur.
+
+            // İstifadəçi adının alınması.
             Console.WriteLine("İstifadəçi adı: ");
             Console.ForegroundColor = ConsoleColor.Blue;
             string username = Console.ReadLine();
             Console.ForegroundColor = ConsoleColor.White;
+            // usernam'in boş vəya null olduğu yoxlanılır.
+            if (string.IsNullOrEmpty(username))
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Diqqət! dəyər boşdur və ya null-dır.");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
 
+
+            // İstifadəçi şifrəsinin alınması.
             Console.WriteLine("Şifrə: ");
             Console.ForegroundColor = ConsoleColor.Blue;
             string password = Console.ReadLine();
             Console.ForegroundColor = ConsoleColor.White;
+            // password'un boş vəya null olduğu yoxlanılır.
+            if (string.IsNullOrEmpty(password))
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Diqqət! dəyər boşdur və ya null-dır.");
+                Console.ForegroundColor = ConsoleColor.White;
+            }
 
             // Daxil edilmiş məlumatların Zeynalın məlumatları ilə uyğunluğunu yoxlamaq.
             if (username == "Zeynal" && password == "Zeynal123")
@@ -134,7 +153,6 @@ class Program
             Console.ForegroundColor = ConsoleColor.White;
             return false;
         }
-
     }
 
     public void AddLibraryItemWithExceptionHandling(Library library)
